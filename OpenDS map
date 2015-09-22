@@ -1,0 +1,18 @@
+Since the whole map in OpenDS is base on a common coordinate, so have to give every road, every waypoint and every building
+a own coordinate according to the google map.
+So first, we choose the area we want to model in google map, then measure the length of each road, and the width as well.
+The lane width is about 5 in OpenDS in our model. As the road is a flat surface, so the middle of this surface represent the
+whole plane, we will set the middle in OpenDs. For example the road's size is 10*10, so if we choose 5'5 as the coordinate, the
+the road next to it will be 15'5, these two roads will converge at 10'5, and the border will be 0'5 and 20'5. 
+If we are using the same single road model but rotate 90 degree. Then we can simpy change the configuration in the .secne file.
+Example；
+<node name="Plane" >
+      <position x="0.000000" y="-30.000000" z="7.460708" />
+      <rotation qz="0.000000" qy="0.000000" qx="0.000000" qw="1.000000" />
+      <scale y="25.000000" x="5.000000" z="1.000000" />
+      
+If we want to enlarge the road model, simply change the scale, this is a y-direction road, so in scale we have y= 25 which is
+the length, x= 5 which is the width, z =1 is the original height.
+If we want to change this y-direction road to x-direction road, simply change qz=1 and keep other unchanged then it's done.
+All the road related file is stored under ../asset/Scene/ , including the mesh file for original road imformation, material
+and jpg file for the road surface, and .scene file for how you place all the road in a single map. 
