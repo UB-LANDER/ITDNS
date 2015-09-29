@@ -1,0 +1,41 @@
+The basic communication model of DDS is one of unidirectional data exchange where the applications that publish data
+“push” the relevant data updates to the local caches of co-located subscribers to the data. This information flow is
+regulated by QoS contracts implicitly established between the DataWriters and the DataReaders. The DataWriter specifies
+its QoS contract at the time it declares its intent to publish data and the DataReader does it at the time it declares its intent
+to subscribe to data. The communication patterns typically include many-to-many style configurations. Of primary 
+6 DDS Interoperability Protocol, v2.1
+concern to applications deploying DDS technology is that the information is distributed in an efficient manner with
+minimal overhead. Another important requirement is the need to scale to hundreds or thousands of subscribers in a robust
+fault-tolerant manner.
+The DDS specification prescribes the presence of a built-in discovery service that allows publishers to dynamically
+discover the existence of subscribers and vice-versa and performs this task continuously without the need to contact any
+name servers.
+The DDS specification also prescribes that the implementations should not introduce any single points of failure.
+Consequently protocols must not rely on centralized name servers or centralized information brokers.
+The large scale, loosely-coupled, dynamic nature of applications deploying DDS and the need to adapt to emerging
+transports require certain flexibility on the data-definition and protocol such that each can be evolved while preserving
+backwards compatibility with already deployed systems. 
+
+The Real-Time Publish Subscribe (RTPS) protocol found its roots in industrial automation and was in fact approved by
+the IEC as part of the Real-Time Industrial Ethernet Suite IEC-PAS-62030. It is a field proven technology that is currently
+deployed worldwide in thousands of industrial devices.
+RTPS was specifically developed to support the unique requirements of data-distributions systems. As one of the
+application domains targeted by DDS, the industrial automation community defined requirements for a standard publishsubscribe
+wire-protocol that closely match those of DDS. As a direct result, a close synergy exists between DDS and the
+RTPS wire-protocol, both in terms of the underlying behavioral architecture and the features of RTPS.
+The RTPS protocol is designed to be able to run over multicast and connectionless best-effort transports such as UDP/IP.
+The main features of the RTPS protocol include:
+• Performance and quality-of-service properties to enable best-effort and reliable publish-subscribe communications for
+real-time applications over standard IP networks.
+• Fault tolerance to allow the creation of networks without single points of failure.
+• Extensibility to allow the protocol to be extended and enhanced with new services without breaking backwards
+compatibility and interoperability.
+• Plug-and-play connectivity so that new applications and services are automatically discovered and applications can join
+and leave the network at any time without the need for reconfiguration.
+• Configurability to allow balancing the requirements for reliability and timeliness for each data delivery.
+• Modularity to allow simple devices to implement a subset of the protocol and still participate in the network.
+• Scalability to enable systems to potentially scale to very large networks.
+• Type-safety to prevent application programming errors from compromising the operation of remote nodes.
+The above features make RTPS an excellent match for a DDS wire-protocol. Given its publish-subscribe roots, this is not
+a coincidence, as RTPS was specifically designed for meeting the types of requirements set forth by the DDS application
+domain.
