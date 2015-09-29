@@ -1,0 +1,15 @@
+#Selection of OpenDDS and documetation:
+  Please refer to the website OpenDDS.org for complete documentation
+  Installation guides and other important information
+  
+#GET and SET Function:
+  In my opinion these function in OpenDS and Paramics are complimentary to the pub/sub structure of the openDDS.
+  In openDDS, we have topic which defines the object being used to define the behaviour of the messages being shared in the
+  pub/sub structure.We need to concentrate a bit on the design of the system to define the topics.
+  As of now we can think of either one or two topics - one which initiates the trigger of simulation and the other which 
+  carries it on.In openDS, the driving vehicle sends message to the middleware with its location which has been translated
+  as per Paramics axes. As of now, we have connectionaHandler methods in openDS which does this work of sending message. Upon 
+  integration this method will need to be modified to publish its values to the openDDS.
+  In Paramics also we have similar methods which are predefined and act as the setters of the location of the driving vehicle in 
+  Paramics. They are the  subscribers of the openDS messages and after obtaining the messages will set the location of the vehicle.
+  
